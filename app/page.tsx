@@ -1,7 +1,12 @@
-import Image from "next/image";
+import React from 'react'
+import HomePage from './components/home-page'
 
-export default function Home() {
+const Page = () => {
   return (
-   <>Ansarx</>
-  );
+    <div>
+      <HomePage/>
+    </div>
+  )
 }
+
+export default Page
