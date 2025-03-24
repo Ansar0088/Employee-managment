@@ -78,21 +78,21 @@ const HomePage = () => {
 
                     {/* Buttons */}
                     <div>
-      <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 w-full sm:w-auto mt-4 sm:mt-0">
-        <button 
-          className="bg-gray-800 text-white px-3 py-1.5 rounded-md text-sm flex items-center gap-1 w-full sm:w-auto"
-          onClick={() => setIsModalOpen(true)}
-        >
-          <Pencil className='w-3' /> Edit
-        </button>
-        <button className="bg-[#D3FF1F] text-black px-3 py-1.5 rounded-md text-sm font-medium w-full sm:w-auto">
-          Send Email
-        </button>
-      </div>
+                        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 w-full sm:w-auto mt-4 sm:mt-0">
+                            <button
+                                className="bg-gray-800 text-white px-3 py-1.5 rounded-md text-sm flex items-center gap-1 w-full sm:w-auto"
+                                onClick={() => setIsModalOpen(true)}
+                            >
+                                <Pencil className='w-3' /> Edit
+                            </button>
+                            <button className="bg-[#D3FF1F] text-black px-3 py-1.5 rounded-md text-sm font-medium w-full sm:w-auto">
+                                Send Email
+                            </button>
+                        </div>
 
-      {/* Modal */}
-      <EditEmployeeModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-    </div>
+                        {/* Modal */}
+                        <EditEmployeeModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+                    </div>
                 </div>
                 {/* Tabs */}
                 <div className="border- border-gray-800 ml-3 mt-4">

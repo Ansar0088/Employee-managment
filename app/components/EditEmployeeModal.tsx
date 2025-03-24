@@ -10,20 +10,20 @@ const EditEmployeeModal = ({ isOpen, onClose }: EditEmployeeModalProps) => {
     const [image, setImage] = useState<string | null>(null);
 
     const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0]; 
+        const file = event.target.files?.[0];
         if (file) {
             setImage(URL.createObjectURL(file));
         }
     };
-    
-  
+
+    const handleDeleteImage = () => {
+        setImage(null);
+    };
 
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-[#121508] bg-opacity-60 flex items-center justify-center z-50 p-4  opacity-100">
-                                {/* <div className='h-1 w-14 bg-[#D3FF1F] absolute top-13'></div> */}
-
+        <div className="fixed inset-0 bg-[#121508] bg-opacity-60 flex items-center justify-center z-50 p-4">
             <div className="bg-[#0F0F0F] rounded-lg p-6 w-full max-w-lg text-white shadow-xl relative border border-[#232323]">
 
                 {/* Close Button */}
@@ -38,34 +38,32 @@ const EditEmployeeModal = ({ isOpen, onClose }: EditEmployeeModalProps) => {
                 </p>
 
                 {/* Image Upload Section */}
-                <div className="flex items-center gap-4 mb-6 ">
-                    <div className="    ">
+                <div className="flex items-center gap-4 mb-6">
+                    <div >
                         {image ? (
-                            <img src='/logo.svg' alt="Profile" className="w-full h-full object-cover rounded-md" />
+                            <img src={image} alt="Profile" className="w-full h-full object-cover" />
                         ) : (
-                            <>
-                                <img src='/logo.svg' alt="Profile" className="w-full h-full object-cover rounded-md" />
-
-                            </>
+                            <img src="/logo.svg" alt="Profile" className="w-full h-full object-cover" />
                         )}
                     </div>
 
-                    <div className="w-full ">
+                    <div className="w-full">
                         <input type="file" accept="image/*" id="imageInput" className="hidden" onChange={handleImageUpload} />
                         <div className="flex gap-4 mb-1">
                             <label
                                 htmlFor="imageInput"
-                                className="bg-[#262626] text-white text-xs  font-semibold border border-[#3A3A3A] px-2 py-1.5 rounded-md cursor-pointer hover:bg-[#323232]"
+                                className="bg-[#262626] text-white text-xs font-semibold border border-[#3A3A3A] px-2 py-1.5 rounded-md cursor-pointer hover:bg-[#323232]"
                             >
                                 Upload new image
                             </label>
-                            <label
-                                htmlFor="imageInput"
-                                className="bg-[#191919] text-white text-xs  font-semibold border border-[#3A3A3A] px-2 py-1.5 rounded-md cursor-pointer hover:bg-[#323232]"
-                            >
-                              Delete
-                            </label>
-                           
+                            {image && (
+                                <button
+                                    onClick={handleDeleteImage}
+                                    className="bg-[#191919] text-white text-xs font-semibold border border-[#3A3A3A] px-2 py-1.5 rounded-md hover:bg-[#323232]"
+                                >
+                                    Delete
+                                </button>
+                            )}
                         </div>
                         <p className="text-xs text-neutral-500">
                             Recommended 160x160px in PNG or JPG format, <span className="text-white">Max size 1MB</span>
@@ -85,7 +83,6 @@ const EditEmployeeModal = ({ isOpen, onClose }: EditEmployeeModalProps) => {
                         <input type="text" placeholder="Employee Status" className="border border-neutral-500 p-3 rounded-lg w-full outline-none" />
                         <input type="text" placeholder="Working Status" className="border border-neutral-500 p-3 rounded-lg w-full outline-none" />
                     </div>
-
 
                     {/* Buttons */}
                     <div className="flex justify-end gap-3 mt-6">
