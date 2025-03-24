@@ -9,16 +9,14 @@ interface EditEmployeeModalProps {
 const EditEmployeeModal = ({ isOpen, onClose }: EditEmployeeModalProps) => {
     const [image, setImage] = useState<string | null>(null);
 
-    const handleImageUpload = (event: any) => {
-        const file = event.target.files[0];
+    const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0]; 
         if (file) {
             setImage(URL.createObjectURL(file));
         }
     };
-
-    const handleDeleteImage = () => {
-        setImage(null);
-    };
+    
+  
 
     if (!isOpen) return null;
 
